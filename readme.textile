@@ -9,7 +9,7 @@ h2. Install mozrepl
 h2. Install bundle
 
 # "download the bundle":http://github.com/cohitre/javascript-tmbundle/zipball/master and uncompress it
-# double click to install to textmate
+# double click the bundle file to install to textmate
 
 h2. Use
 
