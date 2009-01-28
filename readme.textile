@@ -8,7 +8,7 @@ h2. Install mozrepl
 
 h2. Install bundle
 
-# "download the bundle":http://share.cohitre.com/firefox-bundle.zip and uncompress it
+# "download the bundle":http://github.com/cohitre/javascript-tmbundle/zipball/master and uncompress it
 # double click to install to textmate
 
 h2. Use
@@ -28,4 +28,4 @@ h2. Use
       green()
   </code></pre>
 
-* Select the text and press %cmd + j%. It should execute in your top firefox window.
+* Select what you just pasted and press %cmd + j%. It should execute in your top firefox window.
