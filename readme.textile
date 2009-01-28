@@ -1,0 +1,31 @@
+h1. Having fun with firefox and textmate!
+(or how i escaped the savages)
+
+h2. Install mozrepl
+
+# "download":http://wiki.github.com/bard/mozrepl mozrepl
+# follow the firefox install instructions
+
+h2. Install bundle
+
+# "download the bundle":http://share.cohitre.com/firefox-bundle.zip and uncompress it
+# double click to install to textmate
+
+h2. Use
+
+* Make sure you are running mozrepl. (Go to Firefox Tools menu and select %MozLab%  → %Start MozRepl%) 
+* Paste this into textmate
+  <pre><code>
+      function green() {
+          jQuery("*").css("background-color","green");
+          setTimeout(purple,2000);
+      }
+
+      function purple() {
+          jQuery("*").css("background-color","purple");
+          setTimeout(green,2000);
+      }
+      green()
+  </code></pre>
+
+* Select the text and press %cmd + j%. It should execute in your top firefox window.
