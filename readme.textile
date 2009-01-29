@@ -11,7 +11,9 @@ h2. Install bundle
 # "download the bundle":http://github.com/cohitre/javascript-tmbundle/zipball/master and uncompress it
 # double click the bundle file to install to textmate
 
-h2. Use
+h2. Commands
+
+h3. Execute javascript on current window
 
 * Make sure you are running mozrepl. (Go to Firefox Tools menu and select %MozLab%  → %Start MozRepl%) 
 * Paste this into textmate
@@ -29,3 +31,9 @@ h2. Use
   </code></pre>
 
 * Select what you just pasted and press %cmd + j%. It should execute in your top firefox window.
+
+h3. Reload all stylesheets
+
+* Make sure you are running mozrepl. (Go to Firefox Tools menu and select %MozLab%  → %Start MozRepl%) 
+
+* Press %cmd + j%. It will reload all the stylesheets.

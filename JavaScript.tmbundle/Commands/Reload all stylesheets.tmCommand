@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+
+require "net/telnet"
+require "open-uri"
+
+localhost = Net::Telnet::new("Host" =&gt; "localhost",
+"Port" =&gt; 4242 ,
+"Timeout" =&gt; 100,
+"Prompt" =&gt; /repl&gt;\s+/n)
+
+localhost.waitfor "Prompt" =&gt; /repl&gt;\s+/
+
+puts "Working on window: #{localhost.cmd("title").gsub(/repl&gt;\s+$/,"")}"
+
+load_script_function = %q[
+  function loadScript(src){
+    var body=document.body;
+    var script=document.createElement('script');
+    script.type='text/javascript';
+    script.src=src;
+    body.appendChild(script);
+  }].split("\n").collect{|l| l.strip}.join("")
+
+localhost.cmd("repl.enter(content)")
+
+localhost.cmd(load_script_function)
+localhost.cmd('jQuery===undefined &amp;&amp; loadScript("http://code.jquery.com/jquery-latest.js");')
+sleep(1)
+localhost.cmd("$ = jQuery")
+
+selection = %q{
+$("link").each( function(i,o){
+  var src = $(this).attr('href')+"?";
+  $(this).attr("href",src);
+});
+}.split("\n").join("")
+
+puts localhost.cmd(selection).gsub(/repl&gt;\s+$/,"")
+localhost.close
+</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>@j</string>
+	<key>name</key>
+	<string>Reload all stylesheets</string>
+	<key>output</key>
+	<string>showAsTooltip</string>
+	<key>uuid</key>
+	<string>7616372E-B5EA-4CDD-B2F5-B41866C1B7EC</string>
+</dict>
+</plist>
